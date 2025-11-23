@@ -6,3 +6,47 @@
 body {
   @apply bg-gray-100;
 }
+
+/*
+ * Custom utility classes to match the legacy KPI dashboard styles.
+ * These classes mirror the inline styles defined in the original
+ * KM KPI HTML template provided by the user. Without these
+ * definitions the layout and overlay behaviour will not match
+ * the source design.
+ */
+
+/* Semi‑transparent backdrop for modals and mobile sidebar overlay */
+.modal-bg {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Sidebar translation animation */
+.sidebar-transition {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Grid layout for monthly KPI inputs. Creates four columns with
+   a consistent gap and caps the height so the inputs can scroll
+   independently of the card content. */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  max-height: 8rem;
+  overflow-y: auto;
+}
+
+/* Safe top padding for mobile devices. On large screens remove
+   the padding, but on smaller screens apply a top padding to
+   account for the fixed mobile sidebar toggle button. */
+@media (min-width: 1024px) {
+  .pt-safe {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .pt-safe {
+    padding-top: 4rem;
+  }
+}
